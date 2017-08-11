@@ -54,22 +54,39 @@ namespace UnitTests
         public void CheckIsPattern_CorrectArgument_NoException()
         {
             //Arrange
-            string[] args = {"user_option", "*.txt"};
-
             //Act
             //Assert
-            _checkLibrary.CheckIsPattern(args, 1);
+            _checkLibrary.CheckIsPattern("*.txt");
         }
 
         [Test]
         public void CheckIsPattern_ArgumentIsNotAPattern_ArgumentException()
         {
             //Arrange
-            string[] args = {"user-option", "txt"};
-
             //Act
             //Assert
-            Assert.Throws<ArgumentException>(() => _checkLibrary.CheckIsPattern(args, 1));
+            Assert.Throws<ArgumentException>(() => _checkLibrary.CheckIsPattern("txt"));
+
+        }
+
+        [Test]
+        public void CheckAtLeastNumberOfArguments_1argProvided_NoException()
+        {
+            //Arrange
+            string[] args = {"user-option", "arg1"};
+            //Act
+            //Assert
+            _checkLibrary.CheckHasAtLeastNumberOfArguments(args, 1);
+        }
+
+        [Test]
+        public void CheckAtleastNumberOfArguments_NoArgumentsGiven_ExceptionCast()
+        {
+            //Arrange
+            string[] args = {"user-option"};
+            //Act
+            //Assert
+            Assert.Throws<ArgumentException>(() => _checkLibrary.CheckHasAtLeastNumberOfArguments(args, 1));
 
         }
     }

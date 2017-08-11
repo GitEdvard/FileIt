@@ -5,12 +5,12 @@ namespace FileIt.Common
 {
     public class ArgumentCheckLibrary
     {
-        public void CheckIsPath(string[] args, int index)
+        public void CheckIsPath(string pathArgument)
         {
             string fullPath;
             try
             {
-                fullPath = Path.GetFullPath(args[index]);
+                fullPath = Path.GetFullPath(pathArgument);
             }
             catch (ArgumentException)
             {
@@ -27,11 +27,11 @@ namespace FileIt.Common
 
         }
 
-        public void CheckIsPattern(string[] args, int index)
+        public void CheckIsPattern(string patternArgument)
         {
-            if (!args[index].Trim().StartsWith("*."))
+            if (!patternArgument.Trim().StartsWith("*."))
             {
-                throw new ArgumentException($"Argument number {index} should denote an extention pattern, and is not starting with '*.'");
+                throw new ArgumentException($"Argument for extention pattern is not starting with '*.'");
             }
         }
 

@@ -12,14 +12,9 @@ namespace FileIt.UserOptions.FindReplace
 
         public void Process(string file, string[] args)
         {
-            var findStr = args[3];
-            var replaceStr = "";
-            if (args.Length > 4)
-            {
-                replaceStr = args[4];
-            }
+            var argProvider = new ArgumentProvider(args);
             var fileName = Path.GetFileName(file);
-            var newFileName = fileName.Replace(findStr, replaceStr);
+            var newFileName = fileName.Replace(argProvider.FindWhat, argProvider.ReplaceWith);
             Console.WriteLine($"{fileName} --> {newFileName}");
             var newFilePath = file.Replace(fileName, newFileName);
             File.Move(file, newFilePath);

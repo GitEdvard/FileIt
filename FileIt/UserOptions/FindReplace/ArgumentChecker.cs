@@ -8,9 +8,10 @@ namespace FileIt.UserOptions.FindReplace
         public void CheckArgument(string[] args)
         {
             var checker = new ArgumentCheckLibrary();
+            var argumentProvider = new ArgumentProvider(args);
             checker.CheckHasAtLeastNumberOfArguments(args, 3);
-            checker.CheckIsPath(args, 1);
-            checker.CheckIsPattern(args, 2);
+            checker.CheckIsPath(argumentProvider.Path);
+            checker.CheckIsPattern(argumentProvider.Pattern);
         }
     }
 }
