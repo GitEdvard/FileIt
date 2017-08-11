@@ -2,6 +2,9 @@
 
 namespace FileIt.Common
 {
+    /// <summary>
+    /// Recursively extracts all file names (full path), given a directory.
+    /// </summary>
     public class SimpleFileExtractor : FileExtractor
     {
         public SimpleFileExtractor(string defaultPattern) : base(defaultPattern)
@@ -10,7 +13,7 @@ namespace FileIt.Common
         
         public override string[] ExtractFiles(string path)
         {
-            var files = Directory.GetFiles(path, DefaultPattern, SearchOption.AllDirectories);
+            var files = Directory.GetFiles(path, Pattern, SearchOption.AllDirectories);
             return files;
         }
     }

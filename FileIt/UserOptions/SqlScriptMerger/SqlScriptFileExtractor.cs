@@ -22,7 +22,7 @@ namespace FileIt.UserOptions.SqlScriptMerger
             Console.WriteLine(sortFilePath != null ? $"Sort file found ({sortFilePath})" : "No sort file found");
             _sortFileStream = sortFilePath != null ? new FileIOStream(sortFilePath) : null;
             var sorter = new FileNameSorter(_sortFileStream, Constants.OutputFilename);
-            var extractor = new SimpleFileExtractor(DefaultPattern);
+            var extractor = new SimpleFileExtractor(Pattern);
             var files = extractor.ExtractFiles(path);
             return sorter.SortFiles(files);
         }

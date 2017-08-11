@@ -7,11 +7,11 @@ namespace FileIt.Common
     /// </summary>
     public abstract class FileExtractor
     {
-        protected readonly string DefaultPattern;
+        public string Pattern;
 
         protected FileExtractor(string defaultPattern)
         {
-            DefaultPattern = defaultPattern;
+            Pattern = defaultPattern;
         }
 
         public abstract string[] ExtractFiles(string path);
