@@ -44,9 +44,10 @@ namespace FileIt
         private static void WriteHelpList()
         {
             var str = @"Options:
-    SqlScriptMerger <path>
     ChangeCodePage <path>
+    FindReplace <path> <pattern>
     ReplaceIsNull <path>
+    SqlScriptMerger <path>
     help, -h <option>: shows details about option";
             Console.WriteLine(str);
         }
@@ -86,6 +87,17 @@ The 'use <database>' statements are removed from individual scripts, and
 replaced with one single 'use <database>' statement in the aggregated file";
                     str = str.Replace("{FileExecuteOrderFileName}", Constants.FileExecuteOrderFileName);
                     str = str.Replace("{OutputFilename}", Constants.OutputFilename);
+                    break;
+                case "findreplace":
+                    str = @"FindReplace <path> <pattern> <find what> [<replace with>]
+
+Recursively changes file names with the <pattern> extension,
+starting at the <path> directory. Replaces the <find what> string 
+found in file names with the <replace with> string. Omit 
+<replace with> to replace with nothing.
+
+Example:
+FindReplace . *.txt something somethingelse";
                     break;
                 default:
                     str = $"No help text found for option {command}";

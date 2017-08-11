@@ -40,7 +40,7 @@ namespace FileIt.Common
             _singleFileProcessor.Init(path);
             foreach (var file in files)
             {
-                _singleFileProcessor.Process(file);
+                _singleFileProcessor.Process(file, args);
             }
         }
     }

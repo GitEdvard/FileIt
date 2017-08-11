@@ -5,7 +5,7 @@ using FlexibleStreamHandling;
 
 namespace FileIt.UserOptions.SqlScriptMerger
 {
-    public class SingleFileMerger: ISingleFileProcessor, IDisposable
+    public class SingleFileMerger: ISingleFileProcessor
     {
         private FileIOStream _outputStream;
         private FileMerger _fileMerger;
@@ -18,7 +18,7 @@ namespace FileIt.UserOptions.SqlScriptMerger
             _fileMerger = new FileMerger(_outputStream);
         }
 
-        public void Process(string file)
+        public void Process(string file, string[] args)
         {
             var fileName = Path.GetFileName(file);
             Console.WriteLine(fileName);

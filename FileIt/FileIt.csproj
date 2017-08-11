@@ -55,6 +55,7 @@
     <Compile Include="UserOptions\ChangeCodePage\SingleFileConverter.cs" />
     <Compile Include="Common\SimpleFileExtractor.cs" />
     <Compile Include="UserOptions\FindReplace\ArgumentChecker.cs" />
+    <Compile Include="UserOptions\FindReplace\FindReplaceInFileName.cs" />
     <Compile Include="UserOptions\ReplaceIsNull2\ReplaceIsNullProcessor.cs" />
     <Compile Include="UserOptions\ReplaceIsNull2\Replacer.cs" />
     <Compile Include="UserOptions\ReplaceIsNull2\SingleFileReplacer.cs" />

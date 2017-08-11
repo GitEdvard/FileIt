@@ -8,7 +8,7 @@ namespace FileIt.UserOptions.ChangeCodePage
 {
     class SingleFileConverter : ISingleFileProcessor
     {
-        public void Process(string file)
+        public void Process(string file, string[] args)
         {
             Console.WriteLine("Input file: {0}", file);
             List<string> lines = new List<string>();
