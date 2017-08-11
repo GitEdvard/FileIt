@@ -1,6 +1,7 @@
 ﻿using System;
 using FileIt.Common;
 using FileIt.UserOptions.ChangeCodePage;
+using FileIt.UserOptions.FindReplace;
 using FileIt.UserOptions.ReplaceIsNull2;
 using FileIt.UserOptions.SqlScriptMerger;
 
@@ -26,19 +27,22 @@ namespace FileIt
                     }
                     break;
                 case "changecodepage":
-                    specificOptionProcessor = new CodePageProcessor();
+                    specificOptionProcessor = new CodePageProcessor(args);
+                    break;
+                case "findreplace":
+                    specificOptionProcessor = new FindReplaceProcessor(args);
                     break;
                 case "replaceisnull":
-                    specificOptionProcessor = new ReplaceIsNullProcessor();
+                    specificOptionProcessor = new ReplaceIsNullProcessor(args);
                     break;
                 case "sqlscriptmerger":
-                    specificOptionProcessor = new SqlScriptMergerProcessor();
+                    specificOptionProcessor = new SqlScriptMergerProcessor(args);
                     break;
                 default:
                     Console.WriteLine("Unknown option");
                     return;
             }
-            specificOptionProcessor?.Process(args);
+            specificOptionProcessor?.Process();
         }
 
         private static void WriteHelpList()
@@ -97,7 +101,7 @@ found in file names with the <replace with> string. Omit
 <replace with> to replace with nothing.
 
 Example:
-FindReplace . *.txt something somethingelse";
+FileIt FindReplace . *.txt something somethingelse";
                     break;
                 default:
                     str = $"No help text found for option {command}";

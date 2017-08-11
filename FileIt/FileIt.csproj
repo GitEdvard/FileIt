@@ -27,7 +27,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Executables\</OutputPath>
+    <OutputPath>..\..\..\Smajobb\Misc\Test code\Executables\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -56,6 +56,7 @@
     <Compile Include="Common\SimpleFileExtractor.cs" />
     <Compile Include="UserOptions\FindReplace\ArgumentChecker.cs" />
     <Compile Include="UserOptions\FindReplace\FindReplaceInFileName.cs" />
+    <Compile Include="UserOptions\FindReplace\FindReplaceProcessor.cs" />
     <Compile Include="UserOptions\ReplaceIsNull2\ReplaceIsNullProcessor.cs" />
     <Compile Include="UserOptions\ReplaceIsNull2\Replacer.cs" />
     <Compile Include="UserOptions\ReplaceIsNull2\SingleFileReplacer.cs" />
