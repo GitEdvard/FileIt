@@ -1,5 +1,6 @@
 ﻿using System;
 using FileIt.Interaces;
+using FlexibleStreamHandling;
 
 namespace FileIt.Common
 {
@@ -40,7 +41,10 @@ namespace FileIt.Common
             _singleFileProcessor.Init(path);
             foreach (var file in files)
             {
-                _singleFileProcessor.Process(file, args);
+                using (var stream = new FileIOStream(file))
+                {
+                    _singleFileProcessor.Process(stream, args);
+                }
             }
         }
     }

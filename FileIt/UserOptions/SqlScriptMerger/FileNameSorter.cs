@@ -20,12 +20,10 @@ namespace FileIt.UserOptions.SqlScriptMerger
             var filteredFiles = SortOutOutputFile(files);
             if (_sortOrder == null) return filteredFiles;
             var sortOrder = new List<string>();
-            using (var reader = _sortOrder.GetReader())
+            var reader = _sortOrder.GetReader();
+            while (!reader.EndOfStream)
             {
-                while (!reader.EndOfStream)
-                {
-                    sortOrder.Add(reader.ReadLine());
-                }
+                sortOrder.Add(reader.ReadLine());
             }
             var sortedList = filteredFiles.ToList();
             sortedList.Sort(new FileComparer(sortOrder));

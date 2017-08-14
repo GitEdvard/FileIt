@@ -3,32 +3,27 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using FileIt.Interaces;
+using FlexibleStreamHandling;
 
 namespace FileIt.UserOptions.ChangeCodePage
 {
     class SingleFileConverter : ISingleFileProcessor
     {
-        public void Process(string file, string[] args)
+        public void Process(FlexibleStream stream, string[] args)
         {
-            Console.WriteLine("Input file: {0}", file);
+            Console.WriteLine("Input file: {0}", stream.GetFileName());
             List<string> lines = new List<string>();
-            using (StreamReader sr = new StreamReader(file))
+            var sr = stream.GetReader();
+            while (!sr.EndOfStream)
             {
-                while (!sr.EndOfStream)
-                {
-                    var line = sr.ReadLine();
-                    lines.Add(line);
-                }
+                var line = sr.ReadLine();
+                lines.Add(line);
             }
-            using (var sw = new StreamWriter(file, false, Encoding.GetEncoding(1252)))
+            foreach (var line in lines)
             {
-                foreach (var line in lines)
-                {
-                    sw.WriteLine(line);
-                }
+                stream.WriteLine(line);
             }
             Console.WriteLine("...Converted");
-
         }
 
         public void Init(string path)

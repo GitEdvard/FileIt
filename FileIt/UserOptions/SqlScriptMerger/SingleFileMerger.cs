@@ -18,14 +18,11 @@ namespace FileIt.UserOptions.SqlScriptMerger
             _fileMerger = new FileMerger(_outputStream);
         }
 
-        public void Process(string file, string[] args)
+        public void Process(FlexibleStream stream, string[] args)
         {
-            var fileName = Path.GetFileName(file);
+            var fileName = Path.GetFileName(stream.GetFileName());
             Console.WriteLine(fileName);
-            using (var stream = new FileIOStream(file))
-            {
-                _fileMerger.Append(stream);
-            }
+            _fileMerger.Append(stream);
         }
 
         public void Dispose()
