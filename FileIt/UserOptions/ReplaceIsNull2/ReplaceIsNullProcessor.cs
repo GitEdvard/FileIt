@@ -12,6 +12,6 @@ namespace FileIt.UserOptions.ReplaceIsNull2
 
         protected override IArgumentChecker ArgumentChecker => new SingleArgumentPathChecker();
         protected override ISingleFileProcessor SingleFileProcessor => new SingleFileReplacer(OsService);
-        protected override FileExtractor FileExtractor => new SimpleFileExtractor("*.cs");
+        protected override FileExtractor FileExtractor => new StandardFileExtractor("*.cs");
     }
 }

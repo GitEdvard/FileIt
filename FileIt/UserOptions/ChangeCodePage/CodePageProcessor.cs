@@ -12,6 +12,6 @@ namespace FileIt.UserOptions.ChangeCodePage
 
         protected override IArgumentChecker ArgumentChecker => new SingleArgumentPathChecker();
         protected override ISingleFileProcessor SingleFileProcessor => new SingleFileConverter(OsService);
-        protected override FileExtractor FileExtractor => new SimpleFileExtractor("*.sql");
+        protected override FileExtractor FileExtractor => new StandardFileExtractor("*.sql");
     }
 }

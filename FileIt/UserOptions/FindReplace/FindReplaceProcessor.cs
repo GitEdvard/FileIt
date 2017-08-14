@@ -15,6 +15,6 @@ namespace FileIt.UserOptions.FindReplace
 
         protected override IArgumentChecker ArgumentChecker => new ArgumentChecker();
         protected override ISingleFileProcessor SingleFileProcessor => new FindReplaceInFileName(OsService);
-        protected override FileExtractor FileExtractor => new SimpleFileExtractor(_argumentProvider.Pattern);
+        protected override FileExtractor FileExtractor => new StandardFileExtractor(_argumentProvider.Pattern);
     }
 }

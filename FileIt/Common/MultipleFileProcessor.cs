@@ -32,7 +32,8 @@ namespace FileIt.Common
                 Console.WriteLine(e.Message);
                 return;
             }
-            var path = args[1];
+            var pathProvidor = new PathArgumentProvider(args);
+            var path = pathProvidor.Path;
             var files = _fileExtractor.IsDirectory(path)
                 ? _fileExtractor.ExtractFiles(path)
                 : new[] {path};

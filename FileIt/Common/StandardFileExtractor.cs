@@ -5,9 +5,9 @@ namespace FileIt.Common
     /// <summary>
     /// Recursively extracts all file names (full path), given a directory.
     /// </summary>
-    public class SimpleFileExtractor : FileExtractor
+    public class StandardFileExtractor : FileExtractor
     {
-        public SimpleFileExtractor(string defaultPattern) : base(defaultPattern)
+        public StandardFileExtractor(string defaultPattern) : base(defaultPattern)
         {
         }
         

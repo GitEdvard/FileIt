@@ -12,7 +12,7 @@ namespace UnitTests
         public void TestLoopFilesByDir()
         {
             var path = @"C:\Smajobb\Misc\Test code\ReplaceIsNull\ReplaceIsNull";
-            var iter = new SimpleFileExtractor("*.cs");
+            var iter = new StandardFileExtractor("*.cs");
             var files = iter.ExtractFiles(path);
             Assert.AreEqual(10, files.Length);
         }
@@ -21,7 +21,7 @@ namespace UnitTests
         public void TestIsDirectory()
         {
             var path = @"C:\Smajobb\Misc\Test code\ReplaceIsNull\ReplaceIsNull";
-            var iter = new SimpleFileExtractor("");
+            var iter = new StandardFileExtractor("");
             Assert.IsTrue(iter.IsDirectory(path)); 
         }
 
@@ -29,7 +29,7 @@ namespace UnitTests
         public void TestIsFile()
         {
             var path = @"C:\Smajobb\Misc\Test code\ReplaceIsNull\ReplaceIsNull\ReplaceIsNull.csproj";
-            var iter = new SimpleFileExtractor("");
+            var iter = new StandardFileExtractor("");
             Assert.IsFalse(iter.IsDirectory(path));
 
         }

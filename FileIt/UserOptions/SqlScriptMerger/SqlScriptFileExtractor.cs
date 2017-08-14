@@ -16,13 +16,13 @@ namespace FileIt.UserOptions.SqlScriptMerger
 
         public override string[] ExtractFiles(string path)
         {
-            var sortFileFinder = new SimpleFileExtractor(Constants.FileExecuteOrderFileName);
+            var sortFileFinder = new StandardFileExtractor(Constants.FileExecuteOrderFileName);
             var sortFilePath = sortFileFinder.ExtractFiles(path).
                 ToList().FirstOrDefault();
             Console.WriteLine(sortFilePath != null ? $"Sort file found ({sortFilePath})" : "No sort file found");
             _sortFileStream = sortFilePath != null ? new FileIOStream(sortFilePath) : null;
             var sorter = new FileNameSorter(_sortFileStream, Constants.OutputFilename);
-            var extractor = new SimpleFileExtractor(Pattern);
+            var extractor = new StandardFileExtractor(Pattern);
             var files = extractor.ExtractFiles(path);
             return sorter.SortFiles(files);
         }
