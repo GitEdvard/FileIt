@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using FileIt.Interaces;
 using FileIt.Interfaces;
 using FlexibleStreamHandling;
@@ -23,7 +24,9 @@ namespace FileIt.UserOptions.FindReplace
         {
             var argProvider = new ArgumentProvider(args);
             var fileName = _osService.GetFileName(stream.GetFileName());
-            var newFileName = fileName.Replace(argProvider.FindWhat, argProvider.ReplaceWith);
+            var newFileName = Regex.Replace(fileName, argProvider.FindWhat, argProvider.ReplaceWith, 
+                RegexOptions.IgnoreCase);
+            if (newFileName == fileName) return;
             _osService.WriteLineToConsole($"{fileName} --> {newFileName}");
             var newFilePath = stream.GetFileName().Replace(fileName, newFileName);
             _osService.MoveFile(stream.GetFileName(), newFilePath);
