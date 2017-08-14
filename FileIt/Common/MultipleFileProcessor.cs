@@ -38,6 +38,7 @@ namespace FileIt.Common
                 : new[] {path};
             Console.WriteLine($"Input path: {path}");
             Console.WriteLine($"Number of files found: {files.Length}");
+            var osService = new ProductionOsService();
             _singleFileProcessor.Init(path);
             foreach (var file in files)
             {

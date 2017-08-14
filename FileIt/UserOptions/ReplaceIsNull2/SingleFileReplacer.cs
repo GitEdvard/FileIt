@@ -2,15 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using FileIt.Interaces;
+using FileIt.Interfaces;
 using FlexibleStreamHandling;
 
 namespace FileIt.UserOptions.ReplaceIsNull2
 {
     public class SingleFileReplacer: ISingleFileProcessor
     {
+        private readonly IOsService _osService;
+
+        public SingleFileReplacer(IOsService osService)
+        {
+            _osService = osService;
+        }
+
         public void Process(FlexibleStream stream, string[] args)
         {
-            Console.WriteLine("Input file: {0}", stream.GetFileName());
+            _osService.WriteLineToConsole($"Input file: {stream.GetFileName()}");
             List<string> lines = new List<string>();
             int replacements = 0;
             var rpl = new Replacer();
@@ -28,7 +36,7 @@ namespace FileIt.UserOptions.ReplaceIsNull2
             {
                 stream.WriteLine(line);
             }
-            Console.WriteLine("Replaced IsNull and IsNotNull {0} occurences", replacements);
+            _osService.WriteLineToConsole("Replaced IsNull and IsNotNull {replacements} occurences");
         }
 
         public void Init(string path)

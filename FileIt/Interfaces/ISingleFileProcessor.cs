@@ -1,4 +1,5 @@
 ﻿using System;
+using FileIt.Interfaces;
 using FlexibleStreamHandling;
 
 namespace FileIt.Interaces

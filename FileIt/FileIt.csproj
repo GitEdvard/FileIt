@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Common\ArgumentCheckLibrary.cs" />
     <Compile Include="Common\PathArgumentProvider.cs" />
+    <Compile Include="Common\ProductionOsService.cs" />
+    <Compile Include="Interfaces\IOsService.cs" />
     <Compile Include="UserOptions\ChangeCodePage\CodePageProcessor.cs" />
     <Compile Include="Common\FileExtractor.cs" />
     <Compile Include="Common\MultipleFileProcessor.cs" />

@@ -58,6 +58,7 @@
     <Compile Include="ReplaceIsNullTests.cs" />
     <Compile Include="SqlScriptMerger\FileSorterTests.cs" />
     <Compile Include="SqlScriptMerger\MergeSqlScriptTests.cs" />
+    <Compile Include="Utility\TestOsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

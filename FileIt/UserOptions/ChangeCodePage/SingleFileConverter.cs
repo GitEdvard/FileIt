@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using FileIt.Interaces;
+using FileIt.Interfaces;
 using FlexibleStreamHandling;
 
 namespace FileIt.UserOptions.ChangeCodePage
 {
     class SingleFileConverter : ISingleFileProcessor
     {
+        private readonly IOsService _osService;
+
+        public SingleFileConverter(IOsService osService)
+        {
+            _osService = osService;
+        }
+
         public void Process(FlexibleStream stream, string[] args)
         {
-            Console.WriteLine("Input file: {0}", stream.GetFileName());
+            _osService.WriteLineToConsole($"Input file: {stream.GetFileName()}");
             List<string> lines = new List<string>();
             var sr = stream.GetReader();
             while (!sr.EndOfStream)
@@ -23,7 +31,7 @@ namespace FileIt.UserOptions.ChangeCodePage
             {
                 stream.WriteLine(line);
             }
-            Console.WriteLine("...Converted");
+            _osService.WriteLineToConsole("...Converted");
         }
 
         public void Init(string path)
