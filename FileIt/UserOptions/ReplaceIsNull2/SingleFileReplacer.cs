@@ -22,6 +22,8 @@ namespace FileIt.UserOptions.ReplaceIsNull2
                 replacements += rpl.Replace(line, out replaced);
                 lines.Add(replaced);
             }
+            var underlying_stream = stream.Stream;
+            underlying_stream.Position = 0;
             foreach (var line in lines)
             {
                 stream.WriteLine(line);
@@ -35,6 +37,11 @@ namespace FileIt.UserOptions.ReplaceIsNull2
 
         public void Dispose()
         {
+        }
+
+        public FlexibleStream CreateStream(string path)
+        {
+            return new FileIOStream(path, FileMode.Open, FileAccess.ReadWrite);
         }
     }
 }

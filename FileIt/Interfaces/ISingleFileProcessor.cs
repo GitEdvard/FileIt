@@ -11,5 +11,7 @@ namespace FileIt.Interaces
         void Process(FlexibleStream stream, string[] args);
 
         void Init(string path);
+
+        FlexibleStream CreateStream(string path);
     }
 }

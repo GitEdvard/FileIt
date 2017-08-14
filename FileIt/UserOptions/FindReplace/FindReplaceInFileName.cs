@@ -24,5 +24,10 @@ namespace FileIt.UserOptions.FindReplace
         public void Init(string path)
         {
         }
+
+        public FlexibleStream CreateStream(string path)
+        {
+            return new FileIOStream(path);
+        }
     }
 }

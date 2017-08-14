@@ -29,5 +29,10 @@ namespace FileIt.UserOptions.SqlScriptMerger
         {
             _outputStream?.Dispose();
         }
+
+        public FlexibleStream CreateStream(string path)
+        {
+            return new FileIOStream(path);
+        }
     }
 }

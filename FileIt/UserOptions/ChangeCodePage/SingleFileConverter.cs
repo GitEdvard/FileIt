@@ -33,5 +33,10 @@ namespace FileIt.UserOptions.ChangeCodePage
         public void Dispose()
         {
         }
+
+        public FlexibleStream CreateStream(string path)
+        {
+            return new FileIOStream(path);
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace FileIt.Common
             _singleFileProcessor.Init(path);
             foreach (var file in files)
             {
-                using (var stream = new FileIOStream(file))
+                using (var stream = _singleFileProcessor.CreateStream(file))
                 {
                     _singleFileProcessor.Process(stream, args);
                 }
