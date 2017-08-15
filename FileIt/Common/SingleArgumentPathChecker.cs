@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using FileIt.Interaces;
 
 namespace FileIt.Common
@@ -13,6 +12,7 @@ namespace FileIt.Common
         public void CheckArgument(string[] args)
         {
             var checker = new ArgumentCheckLibrary();
+            var pathProvider = new PathArgumentProvider(args);
 
             try
             {
@@ -23,7 +23,7 @@ namespace FileIt.Common
                 throw new ArgumentException("Path or filename is not specified");
             }
 
-            checker.CheckIsPath(args, 1);
+            checker.CheckIsPath(pathProvider.Path);
         }
     }
 }

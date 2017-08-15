@@ -8,7 +8,7 @@ namespace FileIt.Interaces
         /// This is called within a loop, iterating over all files.
         /// </summary>
         /// <param name="file"></param>
-        void Process(string file);
+        void Process(string file, string[] args);
 
         void Init(string path);
     }

@@ -11,18 +11,25 @@ namespace FileIt.Common
     /// </summary>
     public abstract class SpecificOptionProcessor
     {
+        protected readonly string[] _args;
+
+        protected SpecificOptionProcessor(string[] args)
+        {
+            _args = args;
+        }
+
         protected abstract IArgumentChecker ArgumentChecker { get; }
         protected abstract ISingleFileProcessor SingleFileProcessor { get; }
 
         protected abstract FileExtractor FileExtractor { get; }
 
-        public void Process(string[] args)
+        public void Process()
         {
             using (var singleFileProcessor = SingleFileProcessor)
             {
                 var multiFileProcessor = new MultipleFileProcessor(ArgumentChecker,
                     singleFileProcessor, FileExtractor);
-                multiFileProcessor.Process(args);
+                multiFileProcessor.Process(_args);
             }
         }
     }
