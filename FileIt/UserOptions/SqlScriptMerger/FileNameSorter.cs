@@ -2,7 +2,7 @@
 using System.Linq;
 using FlexibleStreamHandling;
 
-namespace FileIt.SqlScriptMerger
+namespace FileIt.UserOptions.SqlScriptMerger
 {
     public class FileNameSorter
     {

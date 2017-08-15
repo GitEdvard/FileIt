@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using FileIt.Interaces;
 
-namespace FileIt.ChangeCodePage
+namespace FileIt.UserOptions.ChangeCodePage
 {
     class SingleFileConverter : ISingleFileProcessor
     {

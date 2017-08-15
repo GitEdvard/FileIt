@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using FileIt.Interaces;
 
-namespace FileIt.ReplaceIsNull2
+namespace FileIt.UserOptions.ReplaceIsNull2
 {
     public class SingleFileReplacer: ISingleFileProcessor
     {

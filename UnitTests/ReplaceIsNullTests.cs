@@ -1,4 +1,4 @@
-﻿using FileIt.ReplaceIsNull2;
+﻿using FileIt.UserOptions.ReplaceIsNull2;
 using NUnit.Framework;
 
 namespace UnitTests

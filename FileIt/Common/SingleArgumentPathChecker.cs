@@ -12,28 +12,18 @@ namespace FileIt.Common
         /// <param name="args">program input</param>
         public void CheckArgument(string[] args)
         {
-            if (args.Length == 1)
-            {
-                throw new ArgumentException("Path or filename is not specified");
-            }
-            string fullPath;
-            // will cast argument exception if argument is not a path
+            var checker = new ArgumentCheckLibrary();
+
             try
             {
-                fullPath = Path.GetFullPath(args[1]);
+                checker.CheckHasAtLeastNumberOfArguments(args, 1);
             }
             catch (ArgumentException)
             {
-                throw new ArgumentException("The specified path does not exist!");
+                throw new ArgumentException("Path or filename is not specified");
             }
-            try
-            {
-                var attr = File.GetAttributes(fullPath);
-            }
-            catch (Exception)
-            {
-                throw new ArgumentException("The specified path does not exist!");
-            }
+
+            checker.CheckIsPath(args, 1);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
-using FileIt.ChangeCodePage;
 using FileIt.Common;
-using FileIt.ReplaceIsNull2;
-using FileIt.SqlScriptMerger;
+using FileIt.UserOptions.ChangeCodePage;
+using FileIt.UserOptions.ReplaceIsNull2;
+using FileIt.UserOptions.SqlScriptMerger;
 
 namespace FileIt
 {

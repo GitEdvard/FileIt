@@ -46,26 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeCodePage\CodePageProcessor.cs" />
+    <Compile Include="Common\ArgumentCheckLibrary.cs" />
+    <Compile Include="UserOptions\ChangeCodePage\CodePageProcessor.cs" />
     <Compile Include="Common\FileExtractor.cs" />
     <Compile Include="Common\MultipleFileProcessor.cs" />
     <Compile Include="Interfaces\ISingleFileProcessor.cs" />
     <Compile Include="Interfaces\IArgumentChecker.cs" />
-    <Compile Include="ChangeCodePage\SingleFileConverter.cs" />
+    <Compile Include="UserOptions\ChangeCodePage\SingleFileConverter.cs" />
     <Compile Include="Common\SimpleFileExtractor.cs" />
-    <Compile Include="ReplaceIsNull2\ReplaceIsNullProcessor.cs" />
-    <Compile Include="ReplaceIsNull2\Replacer.cs" />
-    <Compile Include="ReplaceIsNull2\SingleFileReplacer.cs" />
+    <Compile Include="UserOptions\FindReplace\ArgumentChecker.cs" />
+    <Compile Include="UserOptions\ReplaceIsNull2\ReplaceIsNullProcessor.cs" />
+    <Compile Include="UserOptions\ReplaceIsNull2\Replacer.cs" />
+    <Compile Include="UserOptions\ReplaceIsNull2\SingleFileReplacer.cs" />
     <Compile Include="Common\SingleArgumentPathChecker.cs" />
     <Compile Include="Common\SpecificOptionProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlScriptMerger\Constants.cs" />
-    <Compile Include="SqlScriptMerger\FileMerger.cs" />
-    <Compile Include="SqlScriptMerger\FileNameSorter.cs" />
-    <Compile Include="SqlScriptMerger\SingleFileMerger.cs" />
-    <Compile Include="SqlScriptMerger\SqlScriptFileExtractor.cs" />
-    <Compile Include="SqlScriptMerger\SqlScriptMergerProcessor.cs" />
+    <Compile Include="UserOptions\SqlScriptMerger\Constants.cs" />
+    <Compile Include="UserOptions\SqlScriptMerger\FileMerger.cs" />
+    <Compile Include="UserOptions\SqlScriptMerger\FileNameSorter.cs" />
+    <Compile Include="UserOptions\SqlScriptMerger\SingleFileMerger.cs" />
+    <Compile Include="UserOptions\SqlScriptMerger\SqlScriptFileExtractor.cs" />
+    <Compile Include="UserOptions\SqlScriptMerger\SqlScriptMergerProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

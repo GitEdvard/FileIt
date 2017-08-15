@@ -1,7 +1,7 @@
 ﻿using FileIt.Common;
 using FileIt.Interaces;
 
-namespace FileIt.ChangeCodePage
+namespace FileIt.UserOptions.ChangeCodePage
 {
     public class CodePageProcessor : SpecificOptionProcessor
     {
