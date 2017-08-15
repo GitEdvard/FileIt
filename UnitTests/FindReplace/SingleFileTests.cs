@@ -1,4 +1,5 @@
-﻿using FileIt.UserOptions.FindReplace;
+﻿using System.Text.RegularExpressions;
+using FileIt.UserOptions.FindReplace;
 using FlexibleStreamHandling;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
@@ -96,5 +97,26 @@ namespace UnitTests.FindReplace
             //Assert
             Assert.AreEqual(0, osService.ChangedFiles.Count);
         }
+        [Test]
+        public void FindReplaceFileName_MatchStringHasDot_DotIsWildcard()
+        {
+            //Arrange
+            var filepath = @"filename_sometext.SomeText.txt";
+            var findstr = ".SomeText";
+            string[] args = { "findreplace", ".", "*.txt", findstr };
+            var osService = new TestOsService();
+            var nameProcessor = new FindReplaceInFileName(osService);
+
+            //Act
+            using (var stream = new StringReader("", filepath))
+            {
+                nameProcessor.Process(stream, args);
+            }
+
+            //Assert
+            Assert.AreEqual(1, osService.ChangedFiles.Count);
+            Assert.AreEqual(@"c:\filename.txt", osService.ChangedFiles[0].Item2);
+        }
+
     }
 }
