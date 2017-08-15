@@ -1,7 +1,7 @@
 ﻿using FileIt.Common;
 using FileIt.Interaces;
 
-namespace FileIt.ReplaceIsNull2
+namespace FileIt.UserOptions.ReplaceIsNull2
 {
     public class ReplaceIsNullProcessor: SpecificOptionProcessor
     {

@@ -1,7 +1,7 @@
 ﻿using FileIt.Common;
 using FileIt.Interaces;
 
-namespace FileIt.SqlScriptMerger
+namespace FileIt.UserOptions.SqlScriptMerger
 {
     public class SqlScriptMergerProcessor: SpecificOptionProcessor
     {

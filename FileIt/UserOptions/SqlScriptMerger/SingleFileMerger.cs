@@ -3,7 +3,7 @@ using System.IO;
 using FileIt.Interaces;
 using FlexibleStreamHandling;
 
-namespace FileIt.SqlScriptMerger
+namespace FileIt.UserOptions.SqlScriptMerger
 {
     public class SingleFileMerger: ISingleFileProcessor, IDisposable
     {

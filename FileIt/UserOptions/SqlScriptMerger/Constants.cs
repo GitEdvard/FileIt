@@ -1,4 +1,4 @@
-﻿namespace FileIt.SqlScriptMerger
+﻿namespace FileIt.UserOptions.SqlScriptMerger
 {
     public class Constants
     {

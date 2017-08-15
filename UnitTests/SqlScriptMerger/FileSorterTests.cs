@@ -1,5 +1,5 @@
 ﻿using System;
-using FileIt.SqlScriptMerger;
+using FileIt.UserOptions.SqlScriptMerger;
 using FlexibleStreamHandling;
 using NUnit.Framework;
 

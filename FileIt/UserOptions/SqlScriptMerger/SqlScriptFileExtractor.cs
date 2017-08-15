@@ -3,7 +3,7 @@ using System.Linq;
 using FileIt.Common;
 using FlexibleStreamHandling;
 
-namespace FileIt.SqlScriptMerger
+namespace FileIt.UserOptions.SqlScriptMerger
 {
     public class SqlScriptFileExtractor : FileExtractor, IDisposable
     {

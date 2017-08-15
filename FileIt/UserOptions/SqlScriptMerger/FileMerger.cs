@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using FlexibleStreamHandling;
 
-namespace FileIt.SqlScriptMerger
+namespace FileIt.UserOptions.SqlScriptMerger
 {
     public class FileMerger
     {
