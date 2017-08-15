@@ -1,4 +1,6 @@
 ﻿using System;
+using FileIt.Interfaces;
+using FlexibleStreamHandling;
 
 namespace FileIt.Interaces
 {
@@ -7,9 +9,10 @@ namespace FileIt.Interaces
         /// <summary>
         /// This is called within a loop, iterating over all files.
         /// </summary>
-        /// <param name="file"></param>
-        void Process(string file, string[] args);
+        void Process(FlexibleStream stream, string[] args);
 
         void Init(string path);
+
+        FlexibleStream CreateStream(string path);
     }
 }

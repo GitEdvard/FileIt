@@ -48,13 +48,15 @@
   <ItemGroup>
     <Compile Include="Common\ArgumentCheckLibrary.cs" />
     <Compile Include="Common\PathArgumentProvider.cs" />
+    <Compile Include="Common\ProductionOsService.cs" />
+    <Compile Include="Interfaces\IOsService.cs" />
     <Compile Include="UserOptions\ChangeCodePage\CodePageProcessor.cs" />
     <Compile Include="Common\FileExtractor.cs" />
     <Compile Include="Common\MultipleFileProcessor.cs" />
     <Compile Include="Interfaces\ISingleFileProcessor.cs" />
     <Compile Include="Interfaces\IArgumentChecker.cs" />
     <Compile Include="UserOptions\ChangeCodePage\SingleFileConverter.cs" />
-    <Compile Include="Common\SimpleFileExtractor.cs" />
+    <Compile Include="Common\StandardFileExtractor.cs" />
     <Compile Include="UserOptions\FindReplace\ArgumentChecker.cs" />
     <Compile Include="UserOptions\FindReplace\ArgumentProvider.cs" />
     <Compile Include="UserOptions\FindReplace\FindReplaceInFileName.cs" />

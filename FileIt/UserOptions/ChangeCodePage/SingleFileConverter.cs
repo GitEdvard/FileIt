@@ -3,32 +3,35 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using FileIt.Interaces;
+using FileIt.Interfaces;
+using FlexibleStreamHandling;
 
 namespace FileIt.UserOptions.ChangeCodePage
 {
     class SingleFileConverter : ISingleFileProcessor
     {
-        public void Process(string file, string[] args)
-        {
-            Console.WriteLine("Input file: {0}", file);
-            List<string> lines = new List<string>();
-            using (StreamReader sr = new StreamReader(file))
-            {
-                while (!sr.EndOfStream)
-                {
-                    var line = sr.ReadLine();
-                    lines.Add(line);
-                }
-            }
-            using (var sw = new StreamWriter(file, false, Encoding.GetEncoding(1252)))
-            {
-                foreach (var line in lines)
-                {
-                    sw.WriteLine(line);
-                }
-            }
-            Console.WriteLine("...Converted");
+        private readonly IOsService _osService;
 
+        public SingleFileConverter(IOsService osService)
+        {
+            _osService = osService;
+        }
+
+        public void Process(FlexibleStream stream, string[] args)
+        {
+            _osService.WriteLineToConsole($"Input file: {stream.GetFileName()}");
+            List<string> lines = new List<string>();
+            var sr = stream.GetReader();
+            while (!sr.EndOfStream)
+            {
+                var line = sr.ReadLine();
+                lines.Add(line);
+            }
+            foreach (var line in lines)
+            {
+                stream.WriteLine(line);
+            }
+            _osService.WriteLineToConsole("...Converted");
         }
 
         public void Init(string path)
@@ -37,6 +40,11 @@ namespace FileIt.UserOptions.ChangeCodePage
 
         public void Dispose()
         {
+        }
+
+        public FlexibleStream CreateStream(string path)
+        {
+            return new FileIOStream(path);
         }
     }
 }

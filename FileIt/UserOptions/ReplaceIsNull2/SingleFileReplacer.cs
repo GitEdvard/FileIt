@@ -2,35 +2,41 @@
 using System.Collections.Generic;
 using System.IO;
 using FileIt.Interaces;
+using FileIt.Interfaces;
+using FlexibleStreamHandling;
 
 namespace FileIt.UserOptions.ReplaceIsNull2
 {
     public class SingleFileReplacer: ISingleFileProcessor
     {
-        public void Process(string file, string[] args)
+        private readonly IOsService _osService;
+
+        public SingleFileReplacer(IOsService osService)
         {
-            Console.WriteLine("Input file: {0}", file);
+            _osService = osService;
+        }
+
+        public void Process(FlexibleStream stream, string[] args)
+        {
+            _osService.WriteLineToConsole($"Input file: {stream.GetFileName()}");
             List<string> lines = new List<string>();
             int replacements = 0;
             var rpl = new Replacer();
-            using (StreamReader sr = new StreamReader(file))
+            var sr = stream.GetReader();
+            while (!sr.EndOfStream)
             {
-                while (!sr.EndOfStream)
-                {
-                    var line = sr.ReadLine();
-                    string replaced;
-                    replacements += rpl.Replace(line, out replaced);
-                    lines.Add(replaced);
-                }
+                var line = sr.ReadLine();
+                string replaced;
+                replacements += rpl.Replace(line, out replaced);
+                lines.Add(replaced);
             }
-            using (var sw = new StreamWriter(file, false))
+            var underlying_stream = stream.Stream;
+            underlying_stream.Position = 0;
+            foreach (var line in lines)
             {
-                foreach (var line in lines)
-                {
-                    sw.WriteLine(line);
-                }
+                stream.WriteLine(line);
             }
-            Console.WriteLine("Replaced IsNull and IsNotNull {0} occurences", replacements);
+            _osService.WriteLineToConsole("Replaced IsNull and IsNotNull {replacements} occurences");
         }
 
         public void Init(string path)
@@ -39,6 +45,11 @@ namespace FileIt.UserOptions.ReplaceIsNull2
 
         public void Dispose()
         {
+        }
+
+        public FlexibleStream CreateStream(string path)
+        {
+            return new FileIOStream(path, FileMode.Open, FileAccess.ReadWrite);
         }
     }
 }

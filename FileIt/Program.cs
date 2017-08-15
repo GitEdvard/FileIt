@@ -13,6 +13,7 @@ namespace FileIt
         {
             var fncCall = args[0];
             SpecificOptionProcessor specificOptionProcessor = null;
+            var osService = new ProductionOsService();
             switch (fncCall.ToLower())
             {
                 case "help":
@@ -27,16 +28,16 @@ namespace FileIt
                     }
                     break;
                 case "changecodepage":
-                    specificOptionProcessor = new CodePageProcessor(args);
+                    specificOptionProcessor = new CodePageProcessor(args, osService);
                     break;
                 case "findreplace":
-                    specificOptionProcessor = new FindReplaceProcessor(args);
+                    specificOptionProcessor = new FindReplaceProcessor(args, osService);
                     break;
                 case "replaceisnull":
-                    specificOptionProcessor = new ReplaceIsNullProcessor(args);
+                    specificOptionProcessor = new ReplaceIsNullProcessor(args, osService);
                     break;
                 case "sqlscriptmerger":
-                    specificOptionProcessor = new SqlScriptMergerProcessor(args);
+                    specificOptionProcessor = new SqlScriptMergerProcessor(args, osService);
                     break;
                 default:
                     Console.WriteLine("Unknown option");

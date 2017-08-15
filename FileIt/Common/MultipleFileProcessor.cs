@@ -1,5 +1,6 @@
 ﻿using System;
 using FileIt.Interaces;
+using FlexibleStreamHandling;
 
 namespace FileIt.Common
 {
@@ -31,16 +32,21 @@ namespace FileIt.Common
                 Console.WriteLine(e.Message);
                 return;
             }
-            var path = args[1];
+            var pathProvidor = new PathArgumentProvider(args);
+            var path = pathProvidor.Path;
             var files = _fileExtractor.IsDirectory(path)
                 ? _fileExtractor.ExtractFiles(path)
                 : new[] {path};
             Console.WriteLine($"Input path: {path}");
             Console.WriteLine($"Number of files found: {files.Length}");
+            var osService = new ProductionOsService();
             _singleFileProcessor.Init(path);
             foreach (var file in files)
             {
-                _singleFileProcessor.Process(file, args);
+                using (var stream = _singleFileProcessor.CreateStream(file))
+                {
+                    _singleFileProcessor.Process(stream, args);
+                }
             }
         }
     }

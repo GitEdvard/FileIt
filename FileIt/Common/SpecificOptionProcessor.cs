@@ -1,4 +1,5 @@
 ﻿using FileIt.Interaces;
+using FileIt.Interfaces;
 
 namespace FileIt.Common
 {
@@ -12,10 +13,12 @@ namespace FileIt.Common
     public abstract class SpecificOptionProcessor
     {
         protected readonly string[] _args;
+        protected readonly IOsService OsService;
 
-        protected SpecificOptionProcessor(string[] args)
+        protected SpecificOptionProcessor(string[] args, IOsService osService)
         {
             _args = args;
+            OsService = osService;
         }
 
         protected abstract IArgumentChecker ArgumentChecker { get; }
