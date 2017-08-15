@@ -23,13 +23,13 @@ namespace FileIt.UserOptions.FindReplace
         public void Process(FlexibleStream stream, string[] args)
         {
             var argProvider = new ArgumentProvider(args);
-            var fileName = _osService.GetFileName(stream.GetFileName());
+            var fileName = stream.GetFileName();
             var newFileName = Regex.Replace(fileName, argProvider.FindWhat, argProvider.ReplaceWith, 
                 RegexOptions.IgnoreCase);
             if (newFileName == fileName) return;
             _osService.WriteLineToConsole($"{fileName} --> {newFileName}");
-            var newFilePath = stream.GetFileName().Replace(fileName, newFileName);
-            _osService.MoveFile(stream.GetFileName(), newFilePath);
+            var newFilePath = stream.Path.Replace(fileName, newFileName);
+            _osService.MoveFile(stream.Path, newFilePath);
         }
 
         public void Init(string path)
