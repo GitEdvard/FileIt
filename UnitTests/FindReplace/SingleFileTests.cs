@@ -14,43 +14,43 @@ namespace UnitTests.FindReplace
         public void FindReplaceInFileNames_FileMatchFindStr_FileNameChanged()
         {
             //Arrange
-            var filepath = @"c:\tmp\afilename_mmm.txt";
+            var fileName = @"afilename_mmm.txt";
             var findstr = "mmm";
             string[] args = {"findreplace", ".", "*.txt", findstr};
             var osService = new TestOsService();
             var nameProcessor = new FindReplaceInFileName(osService);
 
             //Act
-            using (var stream = new StringReader("", filepath))
+            using (var stream = new StringReader("", fileName))
             {
                 nameProcessor.Process(stream, args);
             }
 
             //Assert
             Assert.AreEqual(osService.ChangedFiles.Count, 1);
-            Assert.AreEqual(filepath, osService.ChangedFiles[0].Item1);
-            Assert.AreEqual(@"c:\tmp\afilename_.txt", osService.ChangedFiles[0].Item2);
+            Assert.AreEqual($@"c:\{fileName}", osService.ChangedFiles[0].Item1);
+            Assert.AreEqual(@"c:\afilename_.txt", osService.ChangedFiles[0].Item2);
         }
         [Test]
         public void FindReplaceInFileNames_CaseMismatch_FilenameChanged()
         {
             //Arrange
-            var filepath = @"c:\tmp\afilename_mmm.txt";
+            var fileName = @"afilename_mmm.txt";
             var findstr = "mMm";
             string[] args = { "findreplace", ".", "*.txt", findstr };
             var osService = new TestOsService();
             var nameProcessor = new FindReplaceInFileName(osService);
 
             //Act
-            using (var stream = new StringReader("", filepath))
+            using (var stream = new StringReader("", fileName))
             {
                 nameProcessor.Process(stream, args);
             }
 
             //Assert
             Assert.AreEqual(osService.ChangedFiles.Count, 1);
-            Assert.AreEqual(filepath, osService.ChangedFiles[0].Item1);
-            Assert.AreEqual(@"c:\tmp\afilename_.txt", osService.ChangedFiles[0].Item2);
+            Assert.AreEqual($@"c:\{fileName}", osService.ChangedFiles[0].Item1);
+            Assert.AreEqual(@"c:\afilename_.txt", osService.ChangedFiles[0].Item2);
 
         }
 
@@ -58,7 +58,7 @@ namespace UnitTests.FindReplace
         public void FindReplaceInFileNames_ReplacementTextNotNull_FilenameChanged()
         {
             //Arrange
-            var filepath = @"c:\tmp\afilename_mmm.txt";
+            var fileName = @"afilename_mmm.txt";
             var findstr = "mMm";
             var replacestr = "X";
             string[] args = { "findreplace", ".", "*.txt", findstr, replacestr };
@@ -66,15 +66,15 @@ namespace UnitTests.FindReplace
             var nameProcessor = new FindReplaceInFileName(osService);
 
             //Act
-            using (var stream = new StringReader("", filepath))
+            using (var stream = new StringReader("", fileName))
             {
                 nameProcessor.Process(stream, args);
             }
 
             //Assert
             Assert.AreEqual(osService.ChangedFiles.Count, 1);
-            Assert.AreEqual(filepath, osService.ChangedFiles[0].Item1);
-            Assert.AreEqual(@"c:\tmp\afilename_X.txt", osService.ChangedFiles[0].Item2);
+            Assert.AreEqual($@"c:\{fileName}", osService.ChangedFiles[0].Item1);
+            Assert.AreEqual(@"c:\afilename_X.txt", osService.ChangedFiles[0].Item2);
 
         }
 
