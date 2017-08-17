@@ -65,7 +65,7 @@ namespace FileIt
                 case "changecodepage":
                     str = @"ChangeCodePage <path>
 
-Recursively changes code page for all .sql files under
+Recursively changes encoding to code page 1252 (latin1) for all .sql files under
 the specified path.
 Use '.' for current path. ";
                     break;
