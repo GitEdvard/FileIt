@@ -27,6 +27,8 @@ namespace FileIt.UserOptions.ChangeCodePage
                 var line = sr.ReadLine();
                 lines.Add(line);
             }
+
+            stream.ReOpenAs(FileMode.Create, FileAccess.Write);
             foreach (var line in lines)
             {
                 stream.WriteLine(line);
